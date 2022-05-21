@@ -6,18 +6,17 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: "/",
-    redirect:'/home',
+    redirect:'/picture',
   },
   {
-    path: "/home",
+    path: "/picture",
     component: () => import("@/views/Home.vue")
+  },
+  {
+    path: "/book",
+    component: () => import("@/views/Book.vue")
   },
 ]
 
-// const router = new VueRouter({
-//   mode: 'history',
-//   base: process.env.BASE_URL,
-//   routes
-// })
 
 export default routes

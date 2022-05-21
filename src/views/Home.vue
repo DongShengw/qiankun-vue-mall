@@ -1,7 +1,8 @@
 <template>
   <v-app>
-    <div style="height: 615px">
-      <v-card class="overflow-hidden">
+
+    <div v-if="value === 0" style="height: 612px" >
+      <v-card  class="overflow-hidden">
         <v-app-bar
             absolute
             color="#3949AB"
@@ -55,7 +56,7 @@
         <v-sheet
             id="scrolling-techniques-3"
             class="overflow-y-auto"
-            max-height="615px"
+            max-height="612px"
         >
           <v-container style="height: 1000px;margin-top: 230px">
             <v-tabs-items v-model="tab">
@@ -131,43 +132,31 @@
         </v-sheet>
       </v-card>
     </div>
+    <div v-if="value === 1">
+      <book/>
+    </div>
     <v-bottom-navigation
-        :value="value"
-        color="teal"
-        grow
+        v-model="value"
+        background-color="#E57373"
+        dark
+        shift
     >
-      <v-btn>
-        <span>Recents</span>
-          <router-link to="/">
-            <v-icon>mdi-history</v-icon>
-          </router-link>
-      </v-btn>
-
-      <v-btn>
-        <span>Favorites</span>
-        <router-link to="/">
-          <v-icon>mdi-heart</v-icon>
-        </router-link>
-      </v-btn>
-
-      <v-btn>
-        <span>Nearby</span>
-        <router-link to="/">
-          <v-icon>mdi-map-marker</v-icon>
-        </router-link>
+      <v-btn v-for="(item,index) in bottomItems" :key="index" @click="goto(item.path)">
+        <span>{{item.name}}</span>
+        <v-icon>{{item.icon}}</v-icon>
       </v-btn>
     </v-bottom-navigation>
-
     <v-main>
-
     </v-main>
   </v-app>
 </template>
 
 <script>
 
+import Book from "@/views/Book";
 export default {
   name: 'App',
+  components: {Book},
   data() {
     return {
       cardItems: [
@@ -190,6 +179,23 @@ export default {
           artist: 'Ellie Goulding',
         },
       ],
+      bottomItems:[
+        {
+          path:'/picture',
+          name:'美图',
+          icon:'mdi-image'
+        },
+        {
+          path:'/book',
+          name:'笔记',
+          icon:'mdi-book'
+        },
+        {
+          path:'/music',
+          name:'音乐',
+          icon:'mdi-music-note'
+        },
+      ],
       tab: null,
       value:'',
       tab_items: [
@@ -198,6 +204,13 @@ export default {
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     }
   },
+  computed:{
+  },
+  methods:{
+    goto(path){
+      // this.$router.push(path)
+    }
+  }
 };
 </script>
 

@@ -5,8 +5,9 @@ import App from './App.vue';
 import routes from './router';
 import store from './store';
 import vuetify from './plugins/vuetify'
+import { Tabbar, TabbarItem } from 'vant';
 import '@mdi/font/css/materialdesignicons.css'
-
+import 'vant/lib/index.css';
 
 Vue.config.productionTip = false;
 
@@ -22,6 +23,8 @@ function render(props = {}) {
   instance = new Vue({
     router,
     vuetify,
+    Tabbar,
+    TabbarItem,
     store,
     render: (h) => h(App),
   }).$mount(container ? container.querySelector('#app') : '#app');
