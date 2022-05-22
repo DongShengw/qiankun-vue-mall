@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <v-card style="height: 612px">
+  <Loading v-if="$store.state.Loading === 1"/>
+  <div v-else-if="$store.state.Loading === 0">
+    <v-card  style="height: 612px" >
       <v-toolbar
           flat
           color="blue-grey"
@@ -54,15 +55,25 @@
         </v-btn>
       </v-card-actions>
     </v-card>
-<!--    <bottom-navigation/>-->
   </div>
 </template>
 
 <script>
 
+import Loading from "@/components/Loading";
+import store from "@/store";
+
 export default {
   name: "Book",
-  components: {}
+  components: {Loading},
+  mounted() {
+    setTimeout(function() {
+      store.commit('endLoading', 0)
+    }, 300)
+  },
+  destroyed() {
+    store.commit('beginLoading', 0)
+  },
 }
 </script>
 

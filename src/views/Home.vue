@@ -1,6 +1,5 @@
 <template>
   <v-app>
-
     <div v-if="value === 0" style="height: 612px" >
       <v-card  class="overflow-hidden">
         <v-app-bar
@@ -47,9 +46,9 @@
                 align-with-title
             >
               <v-tabs-slider color="#FFEB3B"></v-tabs-slider>
-              <v-tab>Tab 1</v-tab>
-              <v-tab>Tab 2</v-tab>
-              <v-tab>Tab 3</v-tab>
+              <v-tab>甜点</v-tab>
+              <v-tab>饮品</v-tab>
+              <v-tab>水果</v-tab>
             </v-tabs>
           </template>
         </v-app-bar>
@@ -63,12 +62,12 @@
               <v-tab-item>
                 <v-row dense>
                   <v-col
-                      v-for="(item, i) in cardItems"
+                      v-for="(item, i) in cardDessertItems"
                       :key="i"
                       cols="12"
                   >
                     <v-card
-                        :color="item.color"
+                        :img=item.src
                         dark
                     >
                       <div class="d-flex flex-no-wrap justify-space-between">
@@ -105,47 +104,144 @@
                           </v-card-actions>
                         </div>
 
-                        <v-avatar
-                            class="ma-3"
-                            size="125"
-                            tile
-                        >
-                          <v-img :src="item.src"></v-img>
-                        </v-avatar>
+<!--                        <v-avatar-->
+<!--                            class="ma-3"-->
+<!--                            size="125"-->
+<!--                            tile-->
+<!--                        >-->
+<!--                          <v-img :src="item.src"></v-img>-->
+<!--                        </v-avatar>-->
                       </div>
                     </v-card>
                   </v-col>
                 </v-row>
               </v-tab-item>
+
               <v-tab-item>
-                <v-card flat>
-                  <v-card-text v-text="text"></v-card-text>
-                </v-card>
+                <v-row dense>
+                  <v-col
+                      v-for="(item, i) in cardDrinkItems"
+                      :key="i"
+                      cols="12"
+                  >
+                    <v-card
+                        :img=item.src
+                        dark
+                    >
+                      <div class="d-flex flex-no-wrap justify-space-between">
+                        <div>
+                          <v-card-title
+                              class="text-h5"
+                              v-text="item.title"
+                          ></v-card-title>
+
+                          <v-card-subtitle v-text="item.artist"></v-card-subtitle>
+
+                          <v-card-actions>
+                            <v-btn
+                                v-if="item.artist === 'Ellie Goulding'"
+                                class="ml-2 mt-3"
+                                fab
+                                icon
+                                height="40px"
+                                right
+                                width="40px"
+                            >
+                              <v-icon>mdi-play</v-icon>
+                            </v-btn>
+
+                            <v-btn
+                                v-else
+                                class="ml-2 mt-5"
+                                outlined
+                                rounded
+                                small
+                            >
+                              START RADIO
+                            </v-btn>
+                          </v-card-actions>
+                        </div>
+                      </div>
+                    </v-card>
+                  </v-col>
+                </v-row>
               </v-tab-item>
+
               <v-tab-item>
-                <v-card flat>
-                  <v-card-text v-text="text"></v-card-text>
-                </v-card>
+                <v-row dense>
+                  <v-col
+                      v-for="(item, i) in cardFruitsItems"
+                      :key="i"
+                      cols="12"
+                  >
+                    <v-card
+                        :img=item.src
+                        dark
+                    >
+                      <div class="d-flex flex-no-wrap justify-space-between">
+                        <div>
+                          <v-card-title
+                              class="text-h5"
+                              v-text="item.title"
+                          ></v-card-title>
+
+                          <v-card-subtitle v-text="item.artist"></v-card-subtitle>
+
+                          <v-card-actions>
+                            <v-btn
+                                v-if="item.artist === 'Ellie Goulding'"
+                                class="ml-2 mt-3"
+                                fab
+                                icon
+                                height="40px"
+                                right
+                                width="40px"
+                            >
+                              <v-icon>mdi-play</v-icon>
+                            </v-btn>
+
+                            <v-btn
+                                v-else
+                                class="ml-2 mt-5"
+                                outlined
+                                rounded
+                                small
+                            >
+                              START RADIO
+                            </v-btn>
+                          </v-card-actions>
+                        </div>
+                      </div>
+                    </v-card>
+                  </v-col>
+                </v-row>
               </v-tab-item>
             </v-tabs-items>
           </v-container>
         </v-sheet>
       </v-card>
     </div>
+
     <div v-if="value === 1">
       <book/>
     </div>
+
+    <div v-if="value === 2">
+      <music/>
+    </div>
+
     <v-bottom-navigation
         v-model="value"
         background-color="#E57373"
         dark
         shift
     >
-      <v-btn v-for="(item,index) in bottomItems" :key="index" @click="goto(item.path)">
+      <v-btn v-for="(item,index) in bottomItems" :key="index" >
         <span>{{item.name}}</span>
         <v-icon>{{item.icon}}</v-icon>
       </v-btn>
     </v-bottom-navigation>
+
     <v-main>
     </v-main>
   </v-app>
@@ -154,27 +250,104 @@
 <script>
 
 import Book from "@/views/Book";
+import Music from "@/views/Music";
 export default {
   name: 'App',
-  components: {Book},
+  components: {Music, Book},
   data() {
     return {
-      cardItems: [
+      cardDessertItems: [
         {
-          color: '#4CAF50',
-          src: require("@/assets/img/dog1.jpg"),
+          src: require("@/assets/img/dessert-1.jpg"),
           title: 'Supermodel',
           artist: 'Foster the People',
         },
         {
-          color: '#E64A19',
-          src: require("@/assets/img/dog6.jpg"),
+          src: require("@/assets/img/dessert-4.jpg"),
           title: 'Supermodel',
           artist: 'Foster the People',
         },
         {
-          color: '#FFA000',
-          src: require("@/assets/img/cat1.jpg"),
+          src: require("@/assets/img/dessert-6.jpg"),
+          title: 'Halcyon Days',
+          artist: 'Ellie Goulding',
+        },
+        {
+          src: require("@/assets/img/dessert-5.jpg"),
+          title: 'Halcyon Days',
+          artist: 'Ellie Goulding',
+        },
+        {
+          src: require("@/assets/img/dessert-3.jpg"),
+          title: 'Halcyon Days',
+          artist: 'Ellie Goulding',
+        },
+        {
+          src: require("@/assets/img/dessert-2.jpg"),
+          title: 'Halcyon Days',
+          artist: 'Ellie Goulding',
+        },
+      ],
+      cardDrinkItems: [
+        {
+          src: require("@/assets/img/drink-1.jpg"),
+          title: 'Supermodel',
+          artist: 'Foster the People',
+        },
+        {
+          src: require("@/assets/img/drink-2.jpg"),
+          title: 'Supermodel',
+          artist: 'Foster the People',
+        },
+        {
+          src: require("@/assets/img/drink-3.jpg"),
+          title: 'Halcyon Days',
+          artist: 'Ellie Goulding',
+        },
+        {
+          src: require("@/assets/img/drink-4.jpg"),
+          title: 'Halcyon Days',
+          artist: 'Ellie Goulding',
+        },
+        {
+          src: require("@/assets/img/drink-5.jpg"),
+          title: 'Halcyon Days',
+          artist: 'Ellie Goulding',
+        },
+        {
+          src: require("@/assets/img/drink-6.jpg"),
+          title: 'Halcyon Days',
+          artist: 'Ellie Goulding',
+        },
+      ],
+      cardFruitsItems: [
+        {
+          src: require("@/assets/img/fruit-1.jpg"),
+          title: 'Supermodel',
+          artist: 'Foster the People',
+        },
+        {
+          src: require("@/assets/img/fruit-2.jpg"),
+          title: 'Supermodel',
+          artist: 'Foster the People',
+        },
+        {
+          src: require("@/assets/img/fruit-3.jpg"),
+          title: 'Halcyon Days',
+          artist: 'Ellie Goulding',
+        },
+        {
+          src: require("@/assets/img/fruit-4.jpg"),
+          title: 'Halcyon Days',
+          artist: 'Ellie Goulding',
+        },
+        {
+          src: require("@/assets/img/fruit-5.jpg"),
+          title: 'Halcyon Days',
+          artist: 'Ellie Goulding',
+        },
+        {
+          src: require("@/assets/img/fruit-6.jpg"),
           title: 'Halcyon Days',
           artist: 'Ellie Goulding',
         },
