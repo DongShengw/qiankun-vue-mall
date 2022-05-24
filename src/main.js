@@ -1,30 +1,28 @@
 import './public-path';
 import Vue from 'vue';
-import VueRouter from 'vue-router';
+// import VueRouter from 'vue-router';
 import App from './App.vue';
-import routes from './router';
+import router from './router';
 import store from './store';
 import vuetify from './plugins/vuetify'
-import { Tabbar, TabbarItem } from 'vant';
+// import { Tabbar, TabbarItem } from 'vant';
 import '@mdi/font/css/materialdesignicons.css'
 import 'vant/lib/index.css';
 
 Vue.config.productionTip = false;
 
-let router = null;
+// let router = null;
 let instance = null;
 function render(props = {}) {
   const { container } = props;
-  router = new VueRouter({
-    base: window.__POWERED_BY_QIANKUN__ ? '/vue-1' : '/',
-    mode: 'history',
-    routes,
-  });
+  // router = new VueRouter({
+  //   base: window.__POWERED_BY_QIANKUN__ ? '/vue-1' : '/',
+  //   mode: 'history',
+  //   routes,
+  // });
   instance = new Vue({
     router,
     vuetify,
-    Tabbar,
-    TabbarItem,
     store,
     render: (h) => h(App),
   }).$mount(container ? container.querySelector('#app') : '#app');
@@ -46,5 +44,5 @@ export async function unmount() {
   instance.$destroy();
   instance.$el.innerHTML = '';
   instance = null;
-  router = null;
+  // router = null;
 }

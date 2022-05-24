@@ -64,7 +64,7 @@ import Loading from "@/components/Loading";
 import store from "@/store";
 
 export default {
-  name: "Book",
+  name: "Cart",
   components: {Loading},
   mounted() {
     setTimeout(function() {

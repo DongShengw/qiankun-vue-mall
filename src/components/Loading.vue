@@ -1,9 +1,9 @@
 <template>
-  <div style="height: 612px">
+  <div style="position:absolute;z-index:9999;">
       <v-progress-circular
           indeterminate
           color="primary"
-          style="position:absolute;margin-top: 310px;margin-left:175px;z-index: 100;"
+          style="margin-top: 310px;margin-left:175px;"
       ></v-progress-circular>
   </div>
 </template>

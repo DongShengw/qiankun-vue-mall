@@ -6,17 +6,28 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: "/",
-    redirect:'/picture',
+    redirect:'/home',
   },
   {
-    path: "/picture",
+    path: "/home",
     component: () => import("@/views/Home.vue")
   },
   {
-    path: "/book",
-    component: () => import("@/views/Book.vue")
+    path: "/food",
+    name:'food',
+    component: () => import("@/views/Food.vue")
+  },
+  {
+    path: "/button",
+    name:'button',
+    component: () => import("@/views/Food.vue")
   },
 ]
 
 
-export default routes
+const router = new VueRouter({
+  base: window.__POWERED_BY_QIANKUN__ ? '/vue-1' : '/',
+  mode: 'history',
+  routes,
+});
+export default router
