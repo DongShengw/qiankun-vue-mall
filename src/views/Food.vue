@@ -1,6 +1,6 @@
 <template>
-  <div style="height: 667px;position: absolute">
-    <v-hover v-slot="{ hover }">
+  <div style="height: 667px;position: absolute" >
+    <v-hover v-slot="{ hover }" >
       <v-card
           class="mx-auto"
           transition="fade-transition"
@@ -34,14 +34,14 @@
                     :loading="loading"
                     :disabled="loading"
                     @click="loader = 'loading'"
-                    color="orange"
+                    color="#FFA726"
                     class="white--text"
                     fab
                     large
                     right
                     top
                 >
-                  <v-icon>mdi-cart</v-icon>
+                  <v-icon>mdi-plus</v-icon>
                 </v-btn>
               </template>
             </v-tooltip>
@@ -58,22 +58,51 @@
             Made of bamboo by hand
           </div>
         </v-card-text>
-
+        <v-timeline
+            align-top
+            dense
+            style="position: absolute;margin-left: 130px"
+        >
+          <v-timeline-item
+              v-for="message in messages"
+              :key="message.time"
+              :color="message.color"
+              small
+          >
+            <div>
+              <div class="font-weight-normal">
+                <strong>{{ message.time }}</strong>
+              </div>
+            </div>
+          </v-timeline-item>
+        </v-timeline>
+        <v-btn
+            absolute
+            color="#FF6F00"
+            class="white--text"
+            fab
+            large
+            @click="toCart"
+            style="margin-left: 35px;margin-top: 130px"
+        >
+          <v-icon>mdi-cart</v-icon>
+        </v-btn>
       </v-card>
     </v-hover>
     <v-snackbar
-        light
-        outlined
-        width="100"
-        :timeout="700"
         elevation="18"
-        color="#EF5350"
+        top
+        rounded="rounded lg"
         v-model="snackbar"
+        color="#4CAF50"
+        timeout="700"
+        text
+        style="text-align:center"
     >
-        添加成功
+      <v-icon color="success">mdi-check-circle</v-icon>
+      添加成功
     </v-snackbar>
   </div>
-
 </template>
 
 <script>
@@ -87,6 +116,20 @@ export default {
       id:0,
       loader: null,
       loading: false,
+      messages: [
+        {
+          time: '10:42am',
+          color: 'deep-purple lighten-1',
+        },
+        {
+          time: '10:37am',
+          color: 'orange',
+        },
+        {
+          time: '9:47am',
+          color: 'success',
+        },
+      ],
     }
   },
   watch: {
@@ -99,17 +142,26 @@ export default {
 
       this.loader = null
       this.snackbar=false
+
+
     },
   },
   methods:{
     back(){
       store.commit('setFood')
       // console.log(store.state.food)
+    },
+    toCart(){
+      this.back()
+      store.commit('setBottomValue',1)
     }
   },
   beforeMount() {
     this.type=store.state.cardType
     this.id=store.state.cardIndex
+  },
+  destroyed() {
+    store.commit('pushGoods',{type:this.type,id:this.id})
   }
 }
 </script>

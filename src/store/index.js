@@ -9,6 +9,7 @@ export default new Vuex.Store({
     cardIndex:0,
     cardType:'1',
     food:false,
+    bottomValue: 0,
     cardDessertItems: [
       {
         src: require("@/assets/img/dessert-1.jpg"),
@@ -202,7 +203,10 @@ export default new Vuex.Store({
           artist: 'Ellie Goulding',
         },
       ],
-    }
+    },
+    goods:[
+        {type:"1",id:0},
+    ],
   },
   getters: {
     Loading:(state) => state.Loading
@@ -223,6 +227,15 @@ export default new Vuex.Store({
     setFood:function (state){
       state.food = !state.food
     },
+    setBottomValue:function (state,value){
+      state.bottomValue = value
+    },
+    pushGoods:function (state,value){
+      state.goods.push(value)
+    },
+    removeGoods:function (state,value){
+      state.goods.remove(value)
+    }
   },
   actions: {
   },

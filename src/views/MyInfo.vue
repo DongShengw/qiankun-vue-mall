@@ -8,38 +8,53 @@
           type="card-avatar, article,list-item-three-line, actions"
       ></v-skeleton-loader>
     </div>
-    <v-container v-else fluid>
-      <v-card class="mt-4 text-center">
-        <v-img
-            class="rounded-circle elevation-6 mt-n12 d-inline-block"
-            src="https://demos.creative-tim.com/vue-material-dashboard/img/marc.aba54d65.jpg"
-            width="128"
-        />
+    <div v-else style="background: #f5f5f5">
+      <v-img
+          height="200px"
+          src="@/assets/img/background-1.jpg"
+      />
+      <v-avatar
+          class="elevation-19 mt-n12 d-inline-block "
+          style="margin-left: 20px"
+          size="90"
+      >
+        <img
+            src="@/assets/img/avatar.jpg"
+            alt="John"
+        >
+      </v-avatar>
+      <v-card
+          class="mx-auto"
+          max-width="300"
+          tile
+          style="margin-top:10px;height: 360px"
+      >
 
-        <v-card-text class="text-center">
-          <h6 class="text-h6 mb-2 text--secondary">
-            CEO / FOUNDER
-          </h6>
-
-          <h4 class="text-h4 mb-3 text--primary">
-            John Leider
-          </h4>
-
-          <p class="text--secondary">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione dolorem deserunt veniam tempora magnam quisquam quam error iusto cupiditate ducimus, et eligendi saepe voluptatibus assumenda similique temporibus placeat animi dicta?
-          </p>
-
-          <v-btn
-              class="mr-0"
+          <v-card-title class="orange--text">
+            Hi! I am Seraphine.
+          </v-card-title>
+        <v-list flat rounded>
+          <v-subheader>REPORTS</v-subheader>
+          <v-list-item-group
+              v-model="selectedItem"
               color="primary"
-              min-width="100"
-              rounded
           >
-            Follow
-          </v-btn>
-        </v-card-text>
+            <v-list-item
+                v-for="(item, i) in items"
+                :key="i"
+            >
+              <v-list-item-icon>
+                <v-icon v-text="item.icon"></v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title v-text="item.text"></v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+
       </v-card>
-    </v-container>
+    </div>
   </div>
 </template>
 
@@ -56,6 +71,12 @@ export default {
         boilerplate: true,
         elevation: 2,
       },
+      selectedItem: 1,
+      items: [
+        { text: 'Real-Time', icon: 'mdi-clock' },
+        { text: 'Audience', icon: 'mdi-account' },
+        { text: 'Conversions', icon: 'mdi-flag' },
+      ],
     }
   },
   mounted() {

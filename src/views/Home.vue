@@ -1,16 +1,17 @@
 <template>
   <v-app>
     <div style="height: 612px">
-      <div v-if="value === 0" v-show="$store.state.food === false" style="height: 612px" >
-        <v-card  class="overflow-hidden">
+      <div v-if="$store.state.bottomValue === 0" v-show="$store.state.food === false" style="height: 612px" >
+        <v-card>
           <v-app-bar
               absolute
               color="#3949AB"
               dark
+              dense
               shrink-on-scroll
-              prominent
               src="@/assets/img/home_background.jpg"
-              scroll-target="#scrolling-techniques-3"
+              scroll-target="#scrolling-techniques-2"
+              scroll-threshold="500"
           >
             <template v-slot:img="{ props }">
               <v-img
@@ -19,7 +20,7 @@
               ></v-img>
             </template>
 
-            <v-app-bar-nav-icon style="margin-top: 10px"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 <!--            <v-text-field-->
 <!--                label="搜索"-->
 <!--                style="margin-left: 15px"-->
@@ -29,17 +30,23 @@
 <!--                <v-icon >mdi-magnify</v-icon>-->
 <!--              </v-btn>-->
 <!--            </v-text-field>-->
-            <!--          <v-app-bar-title>Title</v-app-bar-title>-->
+             <v-app-bar-title
+                 width="60px"
+                 class="text--darken-1"
+                 style="margin-left: 60px"
+             >
+               Welcome
+             </v-app-bar-title>
 
             <v-spacer></v-spacer>
 
-            <!--          <v-btn icon style="margin-top: 10px">-->
-            <!--            <v-icon>mdi-heart</v-icon>-->
-            <!--          </v-btn>-->
+            <v-btn icon >
+              <v-icon>mdi-heart</v-icon>
+           </v-btn>
 
-<!--            <v-btn icon style="margin-top: 10px">-->
-<!--              <v-icon>mdi-dots-vertical</v-icon>-->
-<!--            </v-btn>-->
+            <v-btn icon >
+              <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
 
             <template v-slot:extension>
               <v-tabs
@@ -54,7 +61,7 @@
             </template>
           </v-app-bar>
           <v-sheet
-              id="scrolling-techniques-3"
+              id="scrolling-techniques-2"
               class="overflow-y-auto"
               max-height="612px"
           >
@@ -222,6 +229,7 @@
 
                               <v-btn
                                   v-else
+                                  large
                                   :class="fav ? 'red--text' : ''"
                                   icon
                                   @click="fav = !fav"
@@ -237,25 +245,33 @@
                 </v-tab-item>
               </v-tabs-items>
             </v-container>
+
           </v-sheet>
         </v-card>
       </div>
 
-      <div v-if="value === 1">
+      <div v-if="$store.state.bottomValue === 1">
         <cart/>
       </div>
 
-      <div v-if="value === 2">
+      <div v-if="$store.state.bottomValue === 2">
         <my-info/>
       </div>
 
-      <div  v-if="$store.state.food === true">
-        <food/>
+      <div v-if="$store.state.food">
+        <v-dialog
+            v-model="$store.state.food"
+            fullscreen
+            hide-overlay
+            transition="dialog-bottom-transition"
+        >
+          <food/>
+        </v-dialog>
       </div>
     </div>
 
     <v-bottom-navigation
-        v-model="value"
+        v-model="$store.state.bottomValue"
         v-show="$store.state.food === false"
         background-color="#E57373"
         dark
@@ -266,7 +282,41 @@
         <v-icon>{{item.icon}}</v-icon>
       </v-btn>
     </v-bottom-navigation>
+    <v-navigation-drawer
+        v-model="drawer"
+        absolute
+        temporary
+        style="background: #f5f5f5"
 
+    >
+      <v-list-item>
+        <v-list-item-avatar>
+          <v-img src="@/assets/img/avatar.jpg"></v-img>
+        </v-list-item-avatar>
+
+        <v-list-item-content>
+          <v-list-item-title>Seraphine</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-divider></v-divider>
+
+      <v-list dense>
+        <v-list-item
+            v-for="item in items"
+            :key="item.title"
+            link
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
     <v-main>
     </v-main>
   </v-app>
@@ -304,21 +354,27 @@ export default {
           icon:'mdi-music-note'
         },
       ],
+      drawer: null,
+      items: [
+        { title: 'Home', icon: 'mdi-view-dashboard' },
+        { title: 'About', icon: 'mdi-forum' },
+      ],
       tab: null,
       value:'',
-      fav:false
+      fav:false,
+      dialog:true,
       }
   },
   computed:{
   },
   methods:{
     toFood(index,type){
+      setTimeout('',1000)
       store.commit('setFood')
       store.commit('setCardType', type)
       store.commit('setCardIndex', index)
       // console.log(store.state.cardType)
       // console.log(store.state.cardIndex)
-
     }
   }
 };
@@ -326,8 +382,8 @@ export default {
 
 <style lang="less" scoped>
 .container{
-  height: 985px;
-  margin-top: 230px;
+  height: 975px;
+  margin-top: 190px;
   overflow-y: hidden;
 }
 </style>
