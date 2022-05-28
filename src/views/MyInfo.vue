@@ -8,7 +8,7 @@
           type="card-avatar, article,list-item-three-line, actions"
       ></v-skeleton-loader>
     </div>
-    <div v-else style="background: #f5f5f5">
+    <div v-else >
       <v-img
           height="200px"
           src="@/assets/img/background-1.jpg"

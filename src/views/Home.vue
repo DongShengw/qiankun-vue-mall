@@ -5,7 +5,6 @@
         <v-card>
           <v-app-bar
               absolute
-              color="#3949AB"
               dark
               dense
               shrink-on-scroll
@@ -104,13 +103,22 @@
                               </v-btn>
 
                               <v-btn
-                                  v-else
+                                  v-else-if="i%2===0"
                                   class="ml-2 mt-5"
                                   outlined
                                   rounded
                                   small
                               >
                                 START RADIO
+                              </v-btn>
+                              <v-btn
+                                  v-else
+                                  large
+                                  :class="'red--text'"
+                                  icon
+                                  @click="fav = !fav"
+                              >
+                                <v-icon>mdi-heart</v-icon>
                               </v-btn>
                             </v-card-actions>
                           </div>
@@ -165,13 +173,22 @@
                               </v-btn>
 
                               <v-btn
-                                  v-else
+                                  v-else-if="i%2===0"
                                   class="ml-2 mt-5"
                                   outlined
                                   rounded
                                   small
                               >
                                 START RADIO
+                              </v-btn>
+                              <v-btn
+                                  v-else
+                                  large
+                                  :class="'red--text'"
+                                  icon
+                                  @click="fav = !fav"
+                              >
+                                <v-icon>mdi-heart</v-icon>
                               </v-btn>
                             </v-card-actions>
                           </div>
@@ -230,7 +247,7 @@
                               <v-btn
                                   v-else
                                   large
-                                  :class="fav ? 'red--text' : ''"
+                                  :class="'red--text'"
                                   icon
                                   @click="fav = !fav"
                               >
@@ -270,18 +287,7 @@
       </div>
     </div>
 
-    <v-bottom-navigation
-        v-model="$store.state.bottomValue"
-        v-show="$store.state.food === false"
-        background-color="#E57373"
-        dark
-        shift
-    >
-      <v-btn v-for="(item,index) in bottomItems" :key="index" >
-        <span>{{item.name}}</span>
-        <v-icon>{{item.icon}}</v-icon>
-      </v-btn>
-    </v-bottom-navigation>
+    <bottom-navigation/>
     <v-navigation-drawer
         v-model="drawer"
         absolute
@@ -328,32 +334,16 @@ import store from "@/store/index.js"
 import Cart from "@/views/Cart";
 import MyInfo from "@/views/MyInfo";
 import Food from "@/views/Food";
+import BottomNavigation from "@/components/bottomNavigation";
 
 export default {
   name: 'App',
-  components: {Cart, MyInfo,Food},
+  components: {BottomNavigation, Cart, MyInfo,Food},
   data() {
     return {
-      cardDessertItems: store.state.cardDessertItems,
-      cardDrinkItems: store.state.cardDrinkItems,
-      cardFruitsItems: store.state.cardFruitsItems,
-      bottomItems:[
-        {
-          path:'/picture',
-          name:'美图',
-          icon:'mdi-image'
-        },
-        {
-          path:'/book',
-          name:'笔记',
-          icon:'mdi-book'
-        },
-        {
-          path:'/music',
-          name:'音乐',
-          icon:'mdi-music-note'
-        },
-      ],
+      cardDessertItems: store.state.cardItems['1'],
+      cardDrinkItems: store.state.cardItems['2'],
+      cardFruitsItems: store.state.cardItems['3'],
       drawer: null,
       items: [
         { title: 'Home', icon: 'mdi-view-dashboard' },

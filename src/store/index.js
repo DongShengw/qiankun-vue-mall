@@ -10,102 +10,6 @@ export default new Vuex.Store({
     cardType:'1',
     food:false,
     bottomValue: 0,
-    cardDessertItems: [
-      {
-        src: require("@/assets/img/dessert-1.jpg"),
-        title: 'Supermodel',
-        artist: 'Foster the People',
-      },
-      {
-        src: require("@/assets/img/dessert-4.jpg"),
-        title: 'Supermodel',
-        artist: 'Foster the People',
-      },
-      {
-        src: require("@/assets/img/dessert-6.jpg"),
-        title: 'Halcyon Days',
-        artist: 'Ellie Goulding',
-      },
-      {
-        src: require("@/assets/img/dessert-5.jpg"),
-        title: 'Halcyon Days',
-        artist: 'Ellie Goulding',
-      },
-      {
-        src: require("@/assets/img/dessert-3.jpg"),
-        title: 'Halcyon Days',
-        artist: 'Ellie Goulding',
-      },
-      {
-        src: require("@/assets/img/dessert-2.jpg"),
-        title: 'Halcyon Days',
-        artist: 'Ellie Goulding',
-      },
-    ],
-    cardDrinkItems: [
-      {
-        src: require("@/assets/img/drink-1.jpg"),
-        title: 'Supermodel',
-        artist: 'Foster the People',
-      },
-      {
-        src: require("@/assets/img/drink-2.jpg"),
-        title: 'Supermodel',
-        artist: 'Foster the People',
-      },
-      {
-        src: require("@/assets/img/drink-3.jpg"),
-        title: 'Halcyon Days',
-        artist: 'Ellie Goulding',
-      },
-      {
-        src: require("@/assets/img/drink-4.jpg"),
-        title: 'Halcyon Days',
-        artist: 'Ellie Goulding',
-      },
-      {
-        src: require("@/assets/img/drink-5.jpg"),
-        title: 'Halcyon Days',
-        artist: 'Ellie Goulding',
-      },
-      {
-        src: require("@/assets/img/drink-6.jpg"),
-        title: 'Halcyon Days',
-        artist: 'Ellie Goulding',
-      },
-    ],
-    cardFruitsItems: [
-      {
-        src: require("@/assets/img/fruit-1.jpg"),
-        title: 'Supermodel',
-        artist: 'Foster the People',
-      },
-      {
-        src: require("@/assets/img/fruit-2.jpg"),
-        title: 'Supermodel',
-        artist: 'Foster the People',
-      },
-      {
-        src: require("@/assets/img/fruit-3.jpg"),
-        title: 'Halcyon Days',
-        artist: 'Ellie Goulding',
-      },
-      {
-        src: require("@/assets/img/fruit-4.jpg"),
-        title: 'Halcyon Days',
-        artist: 'Ellie Goulding',
-      },
-      {
-        src: require("@/assets/img/fruit-5.jpg"),
-        title: 'Halcyon Days',
-        artist: 'Ellie Goulding',
-      },
-      {
-        src: require("@/assets/img/fruit-6.jpg"),
-        title: 'Halcyon Days',
-        artist: 'Ellie Goulding',
-      },
-    ],
     cardItems:{
       '1':[
         {
@@ -115,97 +19,117 @@ export default new Vuex.Store({
         },
         {
           src: require("@/assets/img/dessert-4.jpg"),
-          title: 'Supermodel',
+          title: 'Dessert',
           artist: 'Foster the People',
         },
         {
           src: require("@/assets/img/dessert-6.jpg"),
-          title: 'Halcyon Days',
-          artist: 'Ellie Goulding',
+          title: 'Chocolate',
+          artist: 'Ellie Liberty',
         },
         {
           src: require("@/assets/img/dessert-5.jpg"),
-          title: 'Halcyon Days',
-          artist: 'Ellie Goulding',
+          title: 'Ephemeral',
+          artist: 'Freedom Goulding',
         },
         {
           src: require("@/assets/img/dessert-3.jpg"),
-          title: 'Halcyon Days',
+          title: 'Ephemeral',
           artist: 'Ellie Goulding',
         },
         {
           src: require("@/assets/img/dessert-2.jpg"),
-          title: 'Halcyon Days',
-          artist: 'Ellie Goulding',
+          title: 'Shipshape Cat',
+          artist: 'Eternity',
         },
       ],
       '2':[
         {
           src: require("@/assets/img/drink-1.jpg"),
-          title: 'Supermodel',
+          title: 'Delicacy ',
           artist: 'Foster the People',
         },
         {
           src: require("@/assets/img/drink-2.jpg"),
-          title: 'Supermodel',
-          artist: 'Foster the People',
+          title: 'Cool',
+          artist: 'Ellie Liberty',
         },
         {
           src: require("@/assets/img/drink-3.jpg"),
-          title: 'Halcyon Days',
-          artist: 'Ellie Goulding',
+          title: 'The end',
+          artist: 'Freedom Goulding',
         },
         {
           src: require("@/assets/img/drink-4.jpg"),
-          title: 'Halcyon Days',
+          title: 'Eastern Sky',
           artist: 'Ellie Goulding',
         },
         {
           src: require("@/assets/img/drink-5.jpg"),
           title: 'Halcyon Days',
-          artist: 'Ellie Goulding',
+          artist: 'Eternity',
         },
         {
           src: require("@/assets/img/drink-6.jpg"),
-          title: 'Halcyon Days',
+          title: 'A Brilliant',
           artist: 'Ellie Goulding',
         },
       ],
       '3':[
         {
           src: require("@/assets/img/fruit-1.jpg"),
-          title: 'Supermodel',
-          artist: 'Foster the People',
+          title: 'Sunflower ',
+          artist: 'Sun the People',
         },
         {
           src: require("@/assets/img/fruit-2.jpg"),
-          title: 'Supermodel',
+          title: 'Enthusiasm ',
           artist: 'Foster the People',
         },
         {
           src: require("@/assets/img/fruit-3.jpg"),
-          title: 'Halcyon Days',
-          artist: 'Ellie Goulding',
+          title: 'Sophisticated ',
+          artist: 'Bubble',
         },
         {
           src: require("@/assets/img/fruit-4.jpg"),
-          title: 'Halcyon Days',
+          title: 'Bliss  Myself',
           artist: 'Ellie Goulding',
         },
         {
           src: require("@/assets/img/fruit-5.jpg"),
           title: 'Halcyon Days',
-          artist: 'Ellie Goulding',
+          artist: 'Butterfly  Goulding',
         },
         {
           src: require("@/assets/img/fruit-6.jpg"),
-          title: 'Halcyon Days',
+          title: 'Extravaganza ',
           artist: 'Ellie Goulding',
         },
       ],
     },
+    bottomItems:[
+      {
+        path:'/picture',
+        name:'美图',
+        icon:'mdi-image'
+      },
+      {
+        path:'/book',
+        name:'笔记',
+        icon:'mdi-book'
+      },
+      {
+        path:'/music',
+        name:'音乐',
+        icon:'mdi-music-note'
+      },
+    ],
     goods:[
         {type:"1",id:0},
+        {type:"1",id:1},
+        {type:"1",id:2},
+        {type:"1",id:3},
     ],
   },
   getters: {
@@ -234,7 +158,7 @@ export default new Vuex.Store({
       state.goods.push(value)
     },
     removeGoods:function (state,value){
-      state.goods.remove(value)
+      state.goods = state.goods.filter(item => JSON.stringify(item) !== JSON.stringify(value))
     }
   },
   actions: {
