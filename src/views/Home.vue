@@ -19,7 +19,7 @@
               ></v-img>
             </template>
 
-            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon @click.stop="left"></v-app-bar-nav-icon>
 <!--            <v-text-field-->
 <!--                label="搜索"-->
 <!--                style="margin-left: 15px"-->
@@ -288,41 +288,7 @@
     </div>
 
     <bottom-navigation/>
-    <v-navigation-drawer
-        v-model="drawer"
-        absolute
-        temporary
-        style="background: #f5f5f5"
-
-    >
-      <v-list-item>
-        <v-list-item-avatar>
-          <v-img src="@/assets/img/avatar.jpg"></v-img>
-        </v-list-item-avatar>
-
-        <v-list-item-content>
-          <v-list-item-title>Seraphine</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-divider></v-divider>
-
-      <v-list dense>
-        <v-list-item
-            v-for="item in items"
-            :key="item.title"
-            link
-        >
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+    <left-navigation/>
     <v-main>
     </v-main>
   </v-app>
@@ -335,20 +301,16 @@ import Cart from "@/views/Cart";
 import MyInfo from "@/views/MyInfo";
 import Food from "@/views/Food";
 import BottomNavigation from "@/components/bottomNavigation";
+import LeftNavigation from "@/components/leftNavigation";
 
 export default {
   name: 'App',
-  components: {BottomNavigation, Cart, MyInfo,Food},
+  components: {LeftNavigation, BottomNavigation, Cart, MyInfo,Food},
   data() {
     return {
       cardDessertItems: store.state.cardItems['1'],
       cardDrinkItems: store.state.cardItems['2'],
       cardFruitsItems: store.state.cardItems['3'],
-      drawer: null,
-      items: [
-        { title: 'Home', icon: 'mdi-view-dashboard' },
-        { title: 'About', icon: 'mdi-forum' },
-      ],
       tab: null,
       value:'',
       fav:false,
@@ -358,6 +320,9 @@ export default {
   computed:{
   },
   methods:{
+    left(){
+      store.commit('setLeftValue')
+    },
     toFood(index,type){
       setTimeout('',1000)
       store.commit('setFood')

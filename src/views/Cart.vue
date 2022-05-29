@@ -30,48 +30,52 @@
           class="overflow-y-auto"
           max-height="612px"
       >
-        <v-container fluid style="margin-top:55px; height: 612px;">
-          <v-row transition="slide-y-transition">
-            <v-col
-                v-for="(item,index) in $store.state.goods"
-                cols="12"
-                style="overflow-y: hidden;white-space: nowrap;"
-            >
-                <v-card
-                    rounded="rounded lg"
-                    flat
-                    height="110px"
-                    style="background: #FBE9E7"
-                >
-                  <v-checkbox
-                      v-model="checkbox[index].selected"
-                      @click="check(index)"
-                      style="position: absolute;margin:40px 15px"
-                  ></v-checkbox>
-                    <v-img
-                        :aspect-ratio="1"
-                        width="90px"
-                        :src="$store.state.cardItems[item.type][item.id]"
-                        style="position: absolute;margin-left: 50px;margin-top: 10px"
-                    ></v-img>
-                  <div style="width: 60%;height: 100%;position: absolute;margin-left: 150px;margin-top: -21px">
-                    <v-card-text>
-                      <v-card-title>{{$store.state.cardItems[item.type][item.id].title}}</v-card-title>
-                      <v-chip-group
-                          active-class="deep-purple accent-3 white--text"
-                          column
-                      >
-                        <v-chip>5:30PM</v-chip>
+<!--        <v-img :src=require('@/assets/img/bg-cart.jpg') style="position:relative;z-index:9999;width: 100%;height: 70%">-->
+<!--        </v-img>-->
+        <v-container
+            fluid
+            style="margin-top:55px; height: auto;">
+            <v-row >
+              <v-col
+                  v-for="(item,index) in $store.state.goods"
+                  cols="12"
+                  style="overflow-y: hidden;white-space: nowrap;"
+              >
+                  <v-card
+                      rounded="rounded lg"
+                      flat
+                      height="110px"
+                      style="background: #FBE9E7"
+                  >
+                    <v-checkbox
+                        v-model="checkbox[index].selected"
+                        @click="check(index)"
+                        style="position: absolute;margin:40px 15px"
+                    ></v-checkbox>
+                      <v-img
+                          :aspect-ratio="1"
+                          width="90px"
+                          :src="$store.state.cardItems[item.type][item.id]"
+                          style="position: absolute;margin-left: 50px;margin-top: 10px"
+                      ></v-img>
+                    <div style="width: 60%;height: 100%;position: absolute;margin-left: 150px;margin-top: -21px">
+                      <v-card-text>
+                        <v-card-title>{{$store.state.cardItems[item.type][item.id].title}}</v-card-title>
+                        <v-chip-group
+                            active-class="deep-purple accent-3 white--text"
+                            column
+                        >
+                          <v-chip>5:30PM</v-chip>
 
-                        <v-chip>7:30PM</v-chip>
+                          <v-chip>7:30PM</v-chip>
 
-                      </v-chip-group>
-                    </v-card-text>
+                        </v-chip-group>
+                      </v-card-text>
 
-                  </div>
-                </v-card>
-            </v-col>
-          </v-row>
+                    </div>
+                  </v-card>
+              </v-col>
+            </v-row>
         </v-container>
       </v-sheet>
 

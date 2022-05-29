@@ -9,6 +9,7 @@ export default new Vuex.Store({
     cardIndex:0,
     cardType:'1',
     food:false,
+    leftValue:false,
     bottomValue: 0,
     cardItems:{
       '1':[
@@ -153,6 +154,9 @@ export default new Vuex.Store({
     },
     setBottomValue:function (state,value){
       state.bottomValue = value
+    },
+    setLeftValue:function (state){
+      state.leftValue = ! state.leftValue
     },
     pushGoods:function (state,value){
       state.goods.push(value)
