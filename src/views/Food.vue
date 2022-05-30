@@ -118,15 +118,15 @@ export default {
       loading: false,
       messages: [
         {
-          time: '10:42am',
+          time: '9:47',
           color: 'deep-purple lighten-1',
         },
         {
-          time: '10:37am',
+          time: '10:37',
           color: 'orange',
         },
         {
-          time: '9:47am',
+          time: '12:12',
           color: 'success',
         },
       ],

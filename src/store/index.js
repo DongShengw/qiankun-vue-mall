@@ -128,9 +128,9 @@ export default new Vuex.Store({
     ],
     goods:[
         {type:"1",id:0},
-        {type:"1",id:1},
-        {type:"1",id:2},
-        {type:"1",id:3},
+        {type:"2",id:0},
+        {type:"3",id:0},
+        {type:"1",id:5},
     ],
   },
   getters: {

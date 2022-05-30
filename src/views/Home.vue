@@ -32,7 +32,7 @@
              <v-app-bar-title
                  width="60px"
                  class="text--darken-1"
-                 style="margin-left: 60px"
+
              >
                Welcome
              </v-app-bar-title>

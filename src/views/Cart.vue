@@ -61,22 +61,49 @@
                         <v-card-title>{{$store.state.cardItems[item.type][item.id].title}}</v-card-title>
 
                         <v-chip-group
-                            active-class="deep-purple accent-3 white--text"
+                            v-if="item.type == 1 "
                             column
                         >
-
                           <v-chip
                               color="deep-purple accent-3"
                               text-color="white"
-                              style="margin-left:60px"
+                              style="margin-left:80px"
                           >
-                            Premium
+                            Sweet
                             <v-icon >
-                              mdi-star
+                              mdi-cupcake
                             </v-icon>
                           </v-chip>
-
-
+                        </v-chip-group>
+                        <v-chip-group
+                            v-else-if="item.type == 2 "
+                            column
+                        >
+                          <v-chip
+                              color="orange accent-3"
+                              text-color="white"
+                              style="margin-left:80px"
+                          >
+                            Drink
+                            <v-icon >
+                              mdi-beer-outline
+                            </v-icon>
+                          </v-chip>
+                        </v-chip-group>
+                        <v-chip-group
+                            v-else
+                            column
+                        >
+                          <v-chip
+                              color="green"
+                              text-color="white"
+                              style="margin-left:80px"
+                          >
+                            Fruit
+                            <v-icon >
+                              mdi-fruit-watermelon
+                            </v-icon>
+                          </v-chip>
                         </v-chip-group>
                       </v-card-text>
 
