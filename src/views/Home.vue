@@ -75,7 +75,7 @@
                     >
                       <v-card
                           ripple
-                          class="rounded-xl"
+                          class="rounded-lg"
                           :img=item.src
                           @click="toFood(i,1)"
                           dark
@@ -145,7 +145,7 @@
                     >
                       <v-card
                           v      ripple
-                          class="rounded-xl"
+                          class="rounded-lg"
                           :img=item.src
                           @click="toFood(i,2)"
                           dark
@@ -207,7 +207,7 @@
                     >
                       <v-card
                           ripple
-                          class="rounded-xl"
+                          class="rounded-lg"
                           :img=item.src
                           @click="toFood(i,3)"
                           dark

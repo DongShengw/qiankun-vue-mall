@@ -6,7 +6,7 @@
     >
       <v-app-bar
           absolute
-          color="#E57373"
+          color="#FF7043"
           dark
           scroll-target="#scrolling-techniques-6"
       >
@@ -43,9 +43,7 @@
               >
                   <v-card
                       rounded="rounded lg"
-                      flat
                       height="110px"
-                      style="background: #FBE9E7"
                   >
                     <v-checkbox
                         v-model="checkbox[index].selected"
@@ -61,13 +59,23 @@
                     <div style="width: 60%;height: 100%;position: absolute;margin-left: 150px;margin-top: -21px">
                       <v-card-text>
                         <v-card-title>{{$store.state.cardItems[item.type][item.id].title}}</v-card-title>
+
                         <v-chip-group
                             active-class="deep-purple accent-3 white--text"
                             column
                         >
-                          <v-chip>5:30PM</v-chip>
 
-                          <v-chip>7:30PM</v-chip>
+                          <v-chip
+                              color="deep-purple accent-3"
+                              text-color="white"
+                              style="margin-left:60px"
+                          >
+                            Premium
+                            <v-icon >
+                              mdi-star
+                            </v-icon>
+                          </v-chip>
+
 
                         </v-chip-group>
                       </v-card-text>

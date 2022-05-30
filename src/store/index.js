@@ -112,18 +112,18 @@ export default new Vuex.Store({
     bottomItems:[
       {
         path:'/picture',
-        name:'美图',
-        icon:'mdi-image'
+        name:'Food',
+        icon:'mdi-food'
       },
       {
         path:'/book',
-        name:'笔记',
-        icon:'mdi-book'
+        name:'Cart',
+        icon:'mdi-cart'
       },
       {
         path:'/music',
-        name:'音乐',
-        icon:'mdi-music-note'
+        name:'My',
+        icon:'mdi-account'
       },
     ],
     goods:[

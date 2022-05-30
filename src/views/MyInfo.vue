@@ -34,10 +34,9 @@
             Hi! I am Seraphine.
           </v-card-title>
         <v-list flat rounded>
-          <v-subheader>REPORTS</v-subheader>
+          <v-subheader>MyInfo</v-subheader>
           <v-list-item-group
               v-model="selectedItem"
-              color="primary"
           >
             <v-list-item
                 v-for="(item, i) in items"
@@ -75,7 +74,7 @@ export default {
       items: [
         { text: 'Real-Time', icon: 'mdi-clock' },
         { text: 'Audience', icon: 'mdi-account' },
-        { text: 'Conversions', icon: 'mdi-flag' },
+        { text: 'Conversions', icon: 'mdi-book-open-variant' },
       ],
     }
   },
