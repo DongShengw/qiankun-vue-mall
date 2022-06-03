@@ -38,6 +38,7 @@
             <v-row >
               <v-col
                   v-for="(item,index) in $store.state.goods"
+                  :key="index"
                   cols="12"
                   style="overflow-y: hidden;white-space: nowrap;"
               >
