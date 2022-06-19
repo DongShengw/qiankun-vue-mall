@@ -245,14 +245,18 @@ export default {
   updated() {
 
   },
-  mounted() {
+  beforeMount() {
     this.box()
+  },
+  mounted() {
     this.tranButton()
     setTimeout(function() {
       store.commit('endLoading', 0)
     }, 300)
   },
   destroyed() {
+    // console.log(this.goods.length())
+
     store.commit('beginLoading', 0)
   },
 }

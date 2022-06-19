@@ -21,8 +21,9 @@
 
     <v-list dense>
       <v-list-item
-          v-for="item in items"
-          :key="item.title"
+          v-for="(item,index) in items"
+          :key="index"
+          @click="toWeather(index)"
           link
       >
         <v-list-item-icon >
@@ -49,7 +50,7 @@ export default {
         { title: 'Home', icon: 'mdi-view-dashboard' },
         { title: 'Info', icon: 'mdi-account-box-multiple-outline' },
         { title: 'Account', icon: 'mdi-bookmark' },
-        { title: 'Set', icon: 'mdi-cloud-upload' },
+        { title: 'Weather', icon: 'mdi-cloud-upload' },
       ],
     }
   },
@@ -57,6 +58,13 @@ export default {
     toMyInfo(){
       store.commit('setLeftValue')
       store.commit('setBottomValue',2)
+    },
+    toWeather(index) {
+      if (window.__POWERED_BY_QIANKUN__) {
+        if (index === 3) {
+          history.pushState(null, '/vue-2', '/vue-2')
+        }
+      }
     }
   }
 }

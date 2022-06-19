@@ -18,7 +18,9 @@
                   gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
               ></v-img>
             </template>
-
+<!--            <v-btn icon @click.stop="left">-->
+<!--              <v-icon>mdi-arrow-u-left-top</v-icon>-->
+<!--            </v-btn>-->
             <v-app-bar-nav-icon @click.stop="left"></v-app-bar-nav-icon>
 <!--            <v-text-field-->
 <!--                label="搜索"-->
@@ -41,10 +43,10 @@
 
             <v-btn icon >
               <v-icon>mdi-heart</v-icon>
-           </v-btn>
+            </v-btn>
 
-            <v-btn icon >
-              <v-icon>mdi-dots-vertical</v-icon>
+            <v-btn icon @click="toSearch">
+              <v-icon>mdi-magnify</v-icon>
             </v-btn>
 
             <template v-slot:extension>
@@ -321,6 +323,7 @@ export default {
   },
   methods:{
     left(){
+      // this.$router.go(-1);
       store.commit('setLeftValue')
     },
     toFood(index,type){
@@ -330,6 +333,12 @@ export default {
       store.commit('setCardIndex', index)
       // console.log(store.state.cardType)
       // console.log(store.state.cardIndex)
+    },
+    toSearch(){
+      if(window.__POWERED_BY_QIANKUN__)
+      {
+        history.pushState(null,'vue-2','/vue-2/search')
+      }
     }
   }
 };

@@ -31,8 +31,10 @@
       >
 
           <v-card-title class="orange--text">
-            Hi! I am Seraphine.
+            {{ title}}
           </v-card-title>
+
+<!--          <p>{{ tem }}</p>-->
         <v-list flat rounded>
           <v-subheader>MyInfo</v-subheader>
           <v-list-item-group
@@ -41,6 +43,7 @@
             <v-list-item
                 v-for="(item, i) in items"
                 :key="i"
+                @click="goto(i)"
             >
               <v-list-item-icon>
                 <v-icon v-text="item.icon"></v-icon>
@@ -71,22 +74,51 @@ export default {
         elevation: 2,
       },
       selectedItem: 1,
+      title:store.state.title,
+      tem:store.state.tem,
       items: [
-        { text: 'Real-Time', icon: 'mdi-clock' },
-        { text: 'Audience', icon: 'mdi-account' },
+        { text: 'React-counter', icon: 'mdi-clock' },
+        { text: 'jQuery-demo', icon: 'mdi-account' },
         { text: 'Conversions', icon: 'mdi-book-open-variant' },
       ],
     }
   },
   mounted() {
+    // alert(history.state.vue)
+    // console.log(history.state.num)
     setTimeout(function() {
       store.commit('endLoading', 0)
     }, 400)
+    // console.log(this.title)
+    // console.log(history.state)
+    if(history.state.title){
+      store.commit('setTitle',history.state.title)
+      this.title = history.state.title
+    }
+    // console.log(history.state)
+    // if(history.state.tem){
+    //   console.log(history.state.tem)
+    //   store.commit('setTemp',history.state.tem)
+    //   this.tem = history.state.tem
+    // }
+    // console.log(this.title)
+
   },
   destroyed() {
     store.commit('beginLoading', 0)
   },
   methods:{
+    goto(i){
+      if(window.__POWERED_BY_QIANKUN__) {
+        if (i === 0) {
+          // console.log(store.state.goods.length)
+          // history.pushState(null, '/react', '/react')
+          history.pushState({'cartNum': store.state.goods.length}, '/react', '/react')
+        } else if (i === 1) {
+          history.pushState(null, '/html', '/html')
+        }
+      }
+    }
   },
 
 }

@@ -11,6 +11,8 @@ export default new Vuex.Store({
     food:false,
     leftValue:false,
     bottomValue: 0,
+    title:"Hi!I am Seraphine.",
+    tem:'30℃',
     cardItems:{
       '1':[
         {
@@ -163,7 +165,13 @@ export default new Vuex.Store({
     },
     removeGoods:function (state,value){
       state.goods = state.goods.filter(item => JSON.stringify(item) !== JSON.stringify(value))
-    }
+    },
+    setTitle:function (state,value){
+      state.title = value
+    },
+    setTemp:function (state,value){
+      state.tem = value
+    },
   },
   actions: {
   },
